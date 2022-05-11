@@ -1,0 +1,24 @@
+[package]
+name = "chess"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+yaml-rust = "0.4.5"
+linked-hash-map = "0.5.4"
+chess_logic = { path = "../chess_logic" }
+usvg = "0.22.0"
+tiny-skia = "0.6.3"
+resvg = "0.22.0"
+eframe = { version = "0.17.0", path = "../egui/eframe" }
+egui_extras = { version = "0.17.0", features=["svg", "http"], path = "../egui/egui_extras" }
+
+[target.'cfg(target_arch = "wasm32")'.dependencies]
+console_error_panic_hook = "0.1.6"
+tracing-wasm = "0.2"
+instant = { version = "0.1", features = [ "wasm-bindgen" ] }
